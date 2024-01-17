@@ -12,12 +12,13 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
 //variables
-var charLower = ["abcdefghijklmnopqrstuvwxyz"];
-var charUpper = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
-var charNumber = ["0123456789"];
-var charSpecial = ["\"\~`!@#$%^&*()-_+={}[]|\;:<>,./?"];
+var charLower = "abcdefghijklmnopqrstuvwxyz";
+var charUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var charNumber = "0123456789";
+var charSpecial = "\"\~`!@#$%^&*()-_+={}[]|\;:<>,./?";
+
+
 
 function generatePassword () {
   var userPw = "";
@@ -43,29 +44,80 @@ function generatePassword () {
 }
  
   // ask if user wants lowercase characters in password
-  var charLower = confirm ("Would you like lowercase letters in your password? \nPress Ok for yes and Cancel for no.\n")
+  var charLowerInput = confirm ("Would you like lowercase letters in your password? \nPress Ok for yes and Cancel for no.\n")
 
   //ask if user wants uppercase characters in password
-  var charUpper = confirm ("Would you like uppercase letters in your password? \nPress Ok for yes and Cancel for no\n")
+  var charUpperInput = confirm ("Would you like uppercase letters in your password? \nPress Ok for yes and Cancel for no\n")
 
   // ask if user wants numbers in password
-  var charNumber = confirm ("Would you like numbers in your password? \nPress Ok for yes and Cancel for no\n")
+  var charNumberInput = confirm ("Would you like numbers in your password? \nPress Ok for yes and Cancel for no\n")
 
   // ask if user wants special characters in password
-  var charSpecial = confirm ("Would you like special characters in your password? \nPress Ok for yes and Cancel for no\n")
+  var charSpecialInput = confirm ("Would you like special characters in your password? \nPress Ok for yes and Cancel for no\n")
 
   //Error message if no character type is selected 
-  if (!charLower && !charUpper && !charNumber && !charSpecial){
+  if (!charLowerInput && !charUpperInput && !charNumberInput && !charSpecialInput){
     alert("Error! Please choose at least one type of character to be in your password. \nPlease try again.\n");
     return generatePassword;
   }
 
-  //for each character in the password 
-    //select a character chosen character type randomly
+    // randomly select a character from chosen character type
+    var randomChar = ""
+    var finalPw = "";
 
-    // randomly select a character from chosent character type
+    if (charLowerInput && charUpperInput && charNumberInput && charSpecialInput) {
+      randomChar = charLower + charUpper + charNumber + charSpecial
+  
+      }else if (charLowerInput && charUpperInput && charNumberInput && !charSpecialInput) {
+        randomChar =   charLower + charUpper + charNumber
+  
+      }else if (charLowerInput && charUpperInput && !charNumberInput && charSpecialInput) {
+        randomChar = charLower + charUpper + charSpecial
+  
+      }else if (charLowerInput && !charUpperInput && charNumberInput && charSpecialInput) {
+        randomChar = charLower + charNumber + charNumber
+  
+      }else if (charLowerInput && charUpperInput && !charNumberInput && !charSpecialInput) {
+        randomChar = charLower + charUpper
+  
+      }else if (charLowerInput && !charUpperInput && charNumberInput && !charSpecialInput) {
+        randomChar = charLower + charNumber
+  
+      }else if (charLowerInput && !charUpperInput && !charNumberInput && charSpecialInput) {
+        randomChar =  charLower + charSpecial
+  
+      }else if (charLowerInput && !charUpperInput && !charNumberInput && !charSpecialInput) {
+        randomChar = charLower
+  
+      }else if (!charLowerInput && charUpperInput && charNumberInput && charSpecialInput) {
+        randomChar = charUpper + charNumber + charSpecial
+  
+      }else if (!charLowerInput && charUpperInput && !charNumberInput && charSpecialInput) {
+        randomChar = charUpper + charSpecial
+  
+      }else if (!charLowerInput && charUpperInput && charNumberInput && !charSpecialInput) {
+        randomChar = charUpper + charNumber
+  
+      }else if (!charLowerInput && charUpperInput && !charNumberInput && !charSpecialInput) {
+        randomChar = charUpper
+  
+      }else if (!charLowerInput && !charUpperInput && charNumberInput && charSpecialInput) {
+        randomChar = charNumber + charSpecial
+  
+      }else if (!charLowerInput && !charUpperInput && charNumberInput && !charSpecialInput) {
+        randomChar =  charNumber
+  
+      }else{
+        randomChar =  charSpecial
+        
+      }
+        
+      //select random character and add it to the password
+      for (var i=0; i < pwLength; i++){
+        finalPw += randomChar.charAt(Math.floor(Math.random() * randomChar.length));
+  }
+      return finalPw
 
-    //add it to the password
 
 
 }
