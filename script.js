@@ -21,7 +21,6 @@ var charSpecial = "\"\~`!@#$%^&*()-_+={}[]|\;:<>,./?";
 
 
 function generatePassword () {
-  var userPw = "";
 
   // ask for number of characters
   var pwLength = prompt ("How many characters would you like your password to be? \nPlease enter a numerical value from 8-128.\n ")
