@@ -61,9 +61,12 @@ function generatePassword () {
   }
 
     // randomly select a character from chosen character type
+  
     var randomChar = ""
     var finalPw = "";
 
+
+    //Creates a string with combination of chosen character types 
     if (charLowerInput && charUpperInput && charNumberInput && charSpecialInput) {
       randomChar = charLower + charUpper + charNumber + charSpecial
   
@@ -111,12 +114,11 @@ function generatePassword () {
         
       }
         
-      //select random character and add it to the password
+      //select random character from new string and add it to the password
       for (var i=0; i < pwLength; i++){
         finalPw += randomChar.charAt(Math.floor(Math.random() * randomChar.length));
   }
       return finalPw
-
 
 
 }
